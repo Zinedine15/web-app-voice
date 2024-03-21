@@ -8,14 +8,14 @@ if ('webkitSpeechRecognition' in window) {
     // Evento cuando la voz es detectada
     recognition.onresult = function(event) {
       const result = event.results[0][0].transcript; // Obtener el texto reconocido
-      const keyword = 'Victor';
+      const keyword = 'Hola';
       resultDiv.textContent = 'Orden identificada: ' + result;
       
-      result.includes(word);
+      // result.includes(word);
 
-      if (result.includes(keyword)) {
-      console.log("Se encontró la palabra");
-      }
+      if (result.includes(keyword)) console.log("Se encontró la palabra");
+      else  console.log("No se encontró la palabra");
+      
     };
 
     
