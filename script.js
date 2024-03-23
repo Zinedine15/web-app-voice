@@ -1,3 +1,6 @@
+const controlTexto = document.getElementById('controlTexto');
+
+
 // Verificar si el navegador soporta reconocimiento de voz
 if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
@@ -13,7 +16,10 @@ if ('webkitSpeechRecognition' in window) {
       
       // result.includes(word);
 
-      if (result.includes(keyword)) console.log("Se encontró la palabra");
+      if (result.includes(keyword)) {
+        controlTexto.classList.add('fs-3');
+        console.log("Se encontró la palabra");
+      }
       else  console.log("No se encontró la palabra");
       
     };
