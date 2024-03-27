@@ -24,3 +24,19 @@ body {
 #textoBienvenida{
     font-size: 24px;
 }
+
+#lista{
+    font-size: 20px;
+}
+#lista2{
+    font-size: 30px;
+}
+
+#resaltar{
+    font-weight: bold;
+    color: darkgreen;
+}
+
+#blue{
+    color:rgb(16, 88, 160)
+}
