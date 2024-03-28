@@ -24,22 +24,13 @@ if ('webkitSpeechRecognition' in window) {
       const kw3 = 'tamaño pequeño';
       const kw4 = 'cierra la pestaña';
       const kw5 = 'cierra el navegador';
-      // const kw6 = '';
-      
-      // result.includes(word);
-
-      /* if (result.includes(keyword)) {
-        controlTexto.classList.add('fs-3');
-        console.log("Se encontró la palabra");
-      }
-      else  console.log("No se encontró la palabra"); */
       
       if(result.includes(kw1))
-      miVentana = window.open('https://www.google.com');
+      miVentana = window.open('https://www.google.com', '_blank');
       else  console.log("No se encontró la palabra");
 
       if(result.includes(kw2))
-      miVentana2 = window.open('https://acordes.lacuerda.net' );
+      miVentana2 = window.open('https://acordes.lacuerda.net', '_blank' );
       else  console.log("No se encontró la palabra");
 
       if(result.includes(kw3)){
@@ -54,25 +45,7 @@ if ('webkitSpeechRecognition' in window) {
       }
     
       if (result.includes(kw5)) {
-        /* console.log("Adiós!");
-        var isChrome = !!window.chrome && !!window.chrome.webstore;
-        if (isChrome) {
-            window.open('', '_self', ''); 
-            window.close();
-        } else if (typeof InstallTrigger !== 'undefined') {
-            var cancelClose = false;
-            window.addEventListener('beforeunload', function (e) {
-                if (!cancelClose) {
-                    var confirmationMessage = '¿Realmente deseas cerrar la ventana?';
-                    (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-                    return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
-                }
-            });
-            window.close();
-        } else {
-            alert('No se pudo cerrar automáticamente la ventana. Por favor, ciérrala manualmente.');
-        } */
-        miVentana2 = window.open('https://acordes.lacuerda.net');
+        miVentana2 = window.open('https://acordes.lacuerda.net', '_blank');
         setTimeout(function() {
           app.quit();
         }, 5000);
@@ -80,14 +53,8 @@ if ('webkitSpeechRecognition' in window) {
           console.log("No se encontró la palabra ");
       }
 
-      /* if(result.includes(kw6))
-      miVentana5 = window.open('https://www.ejemplo.com', '_blank');
-      else  console.log("No se encontró la palabra"); */
-
     };
 
-    
-  
     // Evento de error
     recognition.onerror = function(event) {
       console.error('Error de reconocimiento de voz:', event.error);
@@ -99,6 +66,37 @@ if ('webkitSpeechRecognition' in window) {
     startButton.classList.add('btn', 'btn-primary', 'mt-3');
     startButton.onclick = function() {
       recognition.start();
+
+      const textoAGuardar = {
+        textCom: result
+      };
+
+      const apiUrl = "https://6604c6232ca9478ea17e7e32.mockapi.io/Comandos";
+
+      const options = {
+        method: 'POST', // Método HTTP POST para guardar datos
+        headers: {
+          'Content-Type': 'application/json' // Especificar el tipo de contenido JSON
+        },
+        body: JSON.stringify(textoAGuardar) // Convertir el objeto a JSON
+      };      
+
+      fetch(apiUrl, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Ocurrió un error al guardar el texto.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Texto guardado exitosamente:', data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+
+
     };
   
     // Añadir el botón al DOM
