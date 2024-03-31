@@ -20,33 +20,36 @@ if ('webkitSpeechRecognition' in window) {
       textCc = result; 
 
       // const keyword = 'Hola';
-      const kw1 = 'Abre una pestaña nueva';
-      const kw2 = 'abre la página de la cuerda';
+      const kw1 = 'pestaña nueva';
+      const kw2 = 'la cuerda';
       const kw3 = 'tamaño pequeño';
-      const kw4 = 'cierra la pestaña';
-      const kw5 = 'cierra el navegador';
+      const kw4 = 'cierra pestaña';
+      const kw5 = 'cierra navegador';
       
-      if(result.includes(kw1))
-      miVentana = window.open('https://www.google.com', '_blank');
-      else  console.log("No se encontró la palabra");
+      if(result.includes(kw1)){
+        window.alert("Abriendo Pestaña Nueva");
+        miVentana = window.open('https://www.google.com', '_blank');
+      }else  console.log("No se encontró la palabra");
 
-      if(result.includes(kw2))
-      miVentana2 = window.open('https://acordes.lacuerda.net', '_blank' );
-      else  console.log("No se encontró la palabra");
+      if(result.includes(kw2)){
+        window.alert("Abriendo Página de 'LaCuerda'");
+        miVentana2 = window.open('https://acordes.lacuerda.net', '_blank' );
+      }else  console.log("No se encontró la palabra");
 
       if(result.includes(kw3)){
       const opciones = 'width=600,height=400,left=100,top=100';
+      window.alert("Abriendo Ventana Pequeña");
       miVentana3 = window.open('https://www.google.com', '_blank', opciones);}
       else  console.log("No se encontró la palabra");
 
-      if (result.includes(kw4)) {
-        miVentana2.close();
-      } else {
+      if (result.includes(kw4)) 
+        window.alert("Puedes cerrar la pestaña");
+       else {
         console.log("No se encontró la palabra");
       }
     
       if (result.includes(kw5)) 
-        miVentana2.quit();
+        window.alert("Puedes cerrar el navegador");
       else {
           console.log("No se encontró la palabra ");
       }
