@@ -1,10 +1,8 @@
 const controlTexto = document.getElementById('controlTexto');
 const miVentana = null;
 const miVentana2 = null;
-const miVentana3 = null;
-const miVentana4 = null;
-const miVentana5 = null;
 
+let textCc = ''; //Variable que guardará el comando detectado
 
 // Verificar si el navegador soporta reconocimiento de voz
 if ('webkitSpeechRecognition' in window) {
@@ -18,6 +16,9 @@ if ('webkitSpeechRecognition' in window) {
       const result = event.results[0][0].transcript; // Obtener el texto reconocido
       
       resultDiv.textContent = 'Orden identificada: ' + result;
+      console.log("Comando Detectado: ", result);
+      textCc = result; 
+
       // const keyword = 'Hola';
       const kw1 = 'Abre una pestaña nueva';
       const kw2 = 'abre la página de la cuerda';
@@ -44,34 +45,17 @@ if ('webkitSpeechRecognition' in window) {
         console.log("No se encontró la palabra");
       }
     
-      if (result.includes(kw5)) {
-        miVentana2 = window.open('https://acordes.lacuerda.net', '_blank');
-        setTimeout(function() {
-          app.quit();
-        }, 5000);
-      } else {
+      if (result.includes(kw5)) 
+        miVentana2.quit();
+      else {
           console.log("No se encontró la palabra ");
       }
 
-    };
-
-    // Evento de error
-    recognition.onerror = function(event) {
-      console.error('Error de reconocimiento de voz:', event.error);
-    };
-  
-    // Botón para iniciar el reconocimiento de voz
-    const startButton = document.createElement('button');
-    startButton.textContent = 'Iniciar Identificación por Voz';
-    startButton.classList.add('btn', 'btn-primary', 'mt-3');
-    startButton.onclick = function() {
-      recognition.start();
-
       const textoAGuardar = {
-        textCom: result
+        textoComando: textCc
       };
 
-      const apiUrl = "https://6604c6232ca9478ea17e7e32.mockapi.io/Comandos";
+      const apiUrl = "https://6604c6232ca9478ea17e7e32.mockapi.io/ComandosDetectados";
 
       const options = {
         method: 'POST', // Método HTTP POST para guardar datos
@@ -94,9 +78,19 @@ if ('webkitSpeechRecognition' in window) {
       .catch(error => {
         console.error('Error:', error);
       });
+    };
 
-
-
+    // Evento de error
+    recognition.onerror = function(event) {
+      console.error('Error de reconocimiento de voz:', event.error);
+    };
+  
+    // Botón para iniciar el reconocimiento de voz
+    const startButton = document.createElement('button');
+    startButton.textContent = 'Iniciar Identificación por Voz';
+    startButton.classList.add('btn', 'btn-primary', 'mt-3');
+    startButton.onclick = function() {
+      recognition.start();
     };
   
     // Añadir el botón al DOM
