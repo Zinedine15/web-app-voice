@@ -1,5 +1,5 @@
-const miVentana = null;
-const miVentana2 = null;
+let miVentana = null;
+let miVentana2 = null;
 
 let textCc = ''; //Variable que guardará el comando detectado
 
@@ -35,7 +35,7 @@ if ('webkitSpeechRecognition' in window) {
         } else if (result.includes(kw3)) {
             const opciones = 'width=600,height=400,left=100,top=100';
             window.alert("Abriendo Ventana Pequeña");
-            miVentana3 = window.open('https://www.google.com', '_blank', opciones);
+            window.open('https://www.google.com', '_blank', opciones);
             enviarDatosAMockAPI(textCc);
         } else if (result.includes(kw4)) {
             window.alert("Puedes cerrar la pestaña de la cuerdax");
@@ -47,36 +47,36 @@ if ('webkitSpeechRecognition' in window) {
             console.log("No se encontró la palabra ");
         }
 
-        function enviarDatosAMockAPI(textoComando) {
-          const apiUrl = "https://6604c6232ca9478ea17e7e32.mockapi.io/ComandosDetectados";
-      
-          const datos = {
-              textoComando: textoComando
-          };
-      
-          const options = {
-              method: 'POST', // Método HTTP POST para enviar los datos
-              headers: {
-                  'Content-Type': 'application/json' // Especificar el tipo de contenido JSON
-              },
-              body: JSON.stringify(datos) // Convertir el objeto a JSON
-          };
-      
-          fetch(apiUrl, options)
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error('Ocurrió un error al enviar los datos a la API.');
-              }
-              return response.json();
-          })
-          .then(data => {
-              console.log('Datos enviados exitosamente a la API:', data);
-          })
-          .catch(error => {
-              console.error('Error al enviar los datos a la API:', error);
-          });
-      }
-      
+        function enviarDatosAMockAPI(textCc) {
+            const apiUrl = "https://6604c6232ca9478ea17e7e32.mockapi.io/ComandosDetectados";
+        
+            const datos = {
+                textoComando: textCc
+            };
+        
+            const options = {
+                method: 'POST', // Método HTTP POST para enviar los datos
+                headers: {
+                    'Content-Type': 'application/json' // Especificar el tipo de contenido JSON
+                },
+                body: JSON.stringify(datos) // Convertir el objeto a JSON
+            };
+        
+            fetch(apiUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Ocurrió un error al enviar los datos a la API.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Datos enviados exitosamente a la API:', data);
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos a la API:', error);
+            });
+        }
+        
     };
 
     // Evento de error
