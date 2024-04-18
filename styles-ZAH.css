@@ -40,3 +40,22 @@ body {
 #blue{
     color:rgb(16, 88, 160)
 }
+
+/* Estilos personalizados */
+
+#resaltar {
+    color: red; /* Cambiar color a rojo */
+  }
+  
+  #lista {
+    font-size: 1.1em; /* Tamaño de fuente más grande */
+  }
+  
+  #textoBienvenida {
+    font-style: italic; /* Estilo de fuente itálica */
+  }
+  
+  #Title {
+    color: #007bff; /* Color de título azul */
+  }
+  
