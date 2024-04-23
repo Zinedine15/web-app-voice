@@ -2,6 +2,24 @@ let miVentana = null;
 let miVentana2 = null;
 
 let textCc = ''; //Variable que guardará el comando detectado
+let resultado = ''; //Variable que guardará el resultado de la detección de voz
+
+// Función para obtener la hora del sistema
+function obtenerHoraDelSistema() {
+  // Obtener la fecha y hora actual
+  var fechaHoraActual = new Date();
+
+  // Extraer la hora, minutos y segundos
+  var hora = fechaHoraActual.getHours();
+  var minutos = fechaHoraActual.getMinutes();
+  var segundos = fechaHoraActual.getSeconds();
+
+  // Formatear la hora en formato HH:MM:SS
+  var horaFormateada = hora + ":" + minutos + ":" + segundos;
+
+  // Devolver la hora formateada
+  return horaFormateada;
+}
 
 // Verificar si el navegador soporta reconocimiento de voz
 if ('webkitSpeechRecognition' in window) {
@@ -14,9 +32,9 @@ if ('webkitSpeechRecognition' in window) {
     recognition.onresult = function(event) {
         const result = event.results[0][0].transcript; // Obtener el texto reconocido
 
-        resultDiv.textContent = 'Orden identificada: ' + result;
-        console.log("Comando Detectado: ", result);
-        textCc = result.toLowerCase();
+        resultado = result;
+        resultDiv.textContent = 'Orden identificada: ' + resultado;
+        console.log("Comando Detectado: ", resultado);
 
         const kw1 = 'pestaña nueva';
         const kw2 = 'la cuerda';
@@ -25,33 +43,35 @@ if ('webkitSpeechRecognition' in window) {
         const kw5 = 'cierra navegador';
 
         if (result.includes(kw1)) {
-            window.alert("Abriendo Pestaña Nueva");
-            miVentana = window.open('https://www.google.com', '_blank');
+            // Obtener el texto reconocido
+            textCc = kw1;
             enviarDatosAMockAPI(textCc);
         } else if (result.includes(kw2)) {
-            window.alert("Abriendo Página de 'LaCuerda'");
-            miVentana2 = window.open('https://acordes.lacuerda.net', '_blank');
+            // Obtener el texto reconocido
+            textCc = kw2;
             enviarDatosAMockAPI(textCc);
         } else if (result.includes(kw3)) {
-            const opciones = 'width=600,height=400,left=100,top=100';
-            window.alert("Abriendo Ventana Pequeña");
-            window.open('https://www.google.com', '_blank', opciones);
+            // Obtener el texto reconocido
+            textCc = kw3;
             enviarDatosAMockAPI(textCc);
         } else if (result.includes(kw4)) {
-            window.alert("Puedes cerrar la pestaña de la cuerdax");
+            // Obtener el texto reconocido
+            textCc = kw4;
             enviarDatosAMockAPI(textCc);
         } else if (result.includes(kw5)) {
-            window.alert("Puedes cerrar el navegador");
+            // Obtener el texto reconocido
+            textCc = kw5;
             enviarDatosAMockAPI(textCc);
         } else {
-            console.log("No se encontró la palabra ");
+            resultDiv.textContent = "No se detecto el comando";
         }
 
         function enviarDatosAMockAPI(textCc) {
             const apiUrl = "https://6604c6232ca9478ea17e7e32.mockapi.io/ComandosDetectados";
         
             const datos = {
-                textoComando: textCc
+                textoComando: textCc,
+                horaSistema: obtenerHoraDelSistema() // Agregar la hora del sistema
             };
         
             const options = {
@@ -87,18 +107,14 @@ if ('webkitSpeechRecognition' in window) {
     // Palabra clave para iniciar el reconocimiento de voz
     const activationKeyword = 'Luis';
 
-    // Iniciar el reconocimiento de voz cuando se detecta la palabra clave
-    recognition.onstart = function() {
-        console.log("Reconocimiento de voz activado");
-    };
-
-    // Detectar la palabra clave y activar el reconocimiento de voz
-    recognition.onend = function() {
-        recognition.start();
-    };
-
     // Iniciar el reconocimiento de voz
     recognition.start();
+
+    // Evento para detectar la palabra clave y activar el reconocimiento de voz
+    recognition.onend = function() {
+        console.log("Reconocimiento de voz terminado. Reiniciando...");
+        recognition.start(); // Reinicia el reconocimiento de voz después de cada detección
+    };
 } else {
     // Si no hay soporte para reconocimiento de voz
     console.error('El reconocimiento de voz no está soportado en este navegador.');

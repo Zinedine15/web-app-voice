@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,40 +9,46 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="styles-ZAH.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img src="icono_pag.png" alt="Grabadora de Voz" class="img-fluid header-image" width="5%">
+    <img src="icono_pag.png" alt="Grabadora de Voz" class="img-fluid header-image" width="2%">
     <div class="container">
       <a class="navbar-brand" href="#">Identificador de Órdenes</a>
     </div>
   </nav>
 
   <div class="container mt-5">
-    <h1 class="fw-bold" id="Title">Identificación de Órdenes por Voz</h1>
-    <div id="result" class="mt-4"></div>
+    <h2 class="fw-bold" id="Title">Identificación de Órdenes por Voz</h2>
   </div>
 
   <div class="container mt-5">
-    <p id="textoBienvenida">Esta página detecta órdenes por medio de identificación por voz</p>
+    <p class="lead" id="textoBienvenida">Esta página detecta órdenes por medio de identificación por voz.</p>
     <hr>
-    <p id="lista2">
-      Se pueden hacer las siguientes órdenes:
+    <div id="lista2">
+      <p class="lead">
+        Se pueden hacer las siguientes órdenes:
+      </p>
       <ul id="lista">
         <li><b>"pestaña nueva":</b> abre una pestaña nueva del navegador</li>
-        <li><b>"la cuerda":</b> abre la página de <span id="resaltar">LaCuerda</span> (Página de Acordes de canciones para guitarra)</li>
+        <li><b>"la cuerda":</b> abre la página de <span id="resaltar">LaCuerda</span> (Página de Acordes de canciones
+          para guitarra)</li>
         <li><b>"tamaño pequeño":</b> abre una ventana nueva de navegador, de tamaño pequeño</li>
         <li><b>"cierra pestaña":</b> cierra la pestaña de la página de <span id="resaltar">LaCuerda</span></li>
         <li><b>"cierra navegador":</b> cierra el navegador</li>
       </ul>
-    </p>
+      <p class="fw-bold" id="lista">El reconocimiento de voz se activa automáticamente al cargar la página.</p>
+      <p class="fw-bold" id="lista">Y se reconocerá el comando al decir la palabra <b>Luis</b>.</p>
+    </div>
   </div>
-  <div class="container mt-5">
-    <p class="fw-bold" id="lista">El reconocimiento de voz se activa automáticamente al cargar la página.</p>
-    <br>
-    <p class="fw-bold" id="lista">Y se recononcerá el comando al decir la palabra <b>Luis</b></p>
+  <hr>
+  <div class="container mt-4">
+    <div id="result" class="mt-4"></div>
   </div>
 
-  <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+  <br>
+
+  <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
     <div class="container">
       <span class="text-muted">Todos los derechos reservados &copy; Zinedine Acosta, 2024</span>
     </div>
@@ -49,4 +56,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

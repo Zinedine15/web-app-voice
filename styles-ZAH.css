@@ -1,61 +1,49 @@
 body {
-    background-color: white;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.60), rgba(255, 255, 255, 0.60)), url('fondo.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
 }
 
-#Title{
-    color:darkcyan;
-}
 
-.card {
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
 
-#result {
-    font-size: 24px;
-    margin-top: 30px;
-}
 
-#bienvenida{
-    text-align: center;
-    color: red;
-}
-
-#textoBienvenida{
-    font-size: 20px;
-}
-
-#lista{
-    font-size: 20px;
-}
-#lista2{
-    font-size: 20px;
-}
-
-#resaltar{
+#Title {
+    color: #007bff; /* Color de título azul */
     font-weight: bold;
-    color: darkgreen;
 }
 
-#blue{
-    color:rgb(16, 88, 160)
+#textoBienvenida {
+    font-size: 16px;
 }
 
-/* Estilos personalizados */
+#lista2 {
+    font-size: 16px;
+}
 
 #resaltar {
-    color: red; /* Cambiar color a rojo */
-  }
-  
-  #lista {
+    font-weight: bold;
+    color: darkgreen; /* Color de resaltado verde oscuro */
+}
+
+#lista {
     font-size: 1.1em; /* Tamaño de fuente más grande */
-  }
-  
-  #textoBienvenida {
-    font-style: italic; /* Estilo de fuente itálica */
-  }
-  
-  #Title {
-    color: #007bff; /* Color de título azul */
-  }
-  
+}
+
+/* Estilos para el footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%; /* Fondo gris claro */
+}
+
+.text-muted {
+    color: white; /* Color de texto gris */
+}
+
+#result{
+    font-size: 20px;
+    font-weight: bold;
+}
