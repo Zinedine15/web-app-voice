@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.60), rgba(255, 255, 255, 0.60)), url('fondo.png');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), url('fondo.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -11,21 +11,21 @@ body {
 
 
 #Title {
-    color: #007bff; /* Color de título azul */
+    color: #2e424d; /* Color de título azul */
     font-weight: bold;
 }
 
 #textoBienvenida {
-    font-size: 16px;
+    font-size: 20px;
 }
 
 #lista2 {
-    font-size: 16px;
+    font-size: 15px;
 }
 
 #resaltar {
     font-weight: bold;
-    color: darkgreen; /* Color de resaltado verde oscuro */
+    color: #5b8291;/* Color de resaltado verde oscuro */
 }
 
 #lista {
@@ -44,6 +44,11 @@ body {
 }
 
 #result{
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
+    color: green;
+}
+#resaltar2{
+    font-weight: bold;
+    color: crimson;/* Color de resaltado verde oscuro */
 }

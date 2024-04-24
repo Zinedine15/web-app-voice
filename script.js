@@ -39,8 +39,9 @@ if ('webkitSpeechRecognition' in window) {
         const kw1 = 'pestaña nueva';
         const kw2 = 'la cuerda';
         const kw3 = 'tamaño pequeño';
-        const kw4 = 'cierra pestaña';
+        const kw4 = 'Abre YouTube';
         const kw5 = 'cierra navegador';
+        const kw6 = 'página del tec';
 
         if (result.includes(kw1)) {
             // Obtener el texto reconocido
@@ -62,7 +63,12 @@ if ('webkitSpeechRecognition' in window) {
             // Obtener el texto reconocido
             textCc = kw5;
             enviarDatosAMockAPI(textCc);
-        } else {
+        } else if (result.includes(kw6)) {
+            // Obtener el texto reconocido
+            textCc = kw6;
+            enviarDatosAMockAPI(textCc);
+        }
+        else {
             resultDiv.textContent = "No se detecto el comando";
         }
 
